@@ -1,24 +1,16 @@
 # Crosscounter
 
-TODO: Write a gem description
+A set of functional tools for generating cross tabulations.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'crosscounter'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install crosscounter
+    gem 'crosscounter', '~> 0.1.0.beta'
 
 ## Usage
 
-TODO: Write usage instructions here
+This is in early development. It isn't intended for general use.
 
 ## Contributing
 

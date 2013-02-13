@@ -1,5 +1,6 @@
-require "crosscounter/version"
+require 'crosscounter/version'
+require 'crosscounter/expansion'
+require 'crosscounter/compute'
 
 module Crosscounter
-  # Your code goes here...
 end
