@@ -1,0 +1,70 @@
+---
+
+n = 1_000_000
+Benchmark.bm do |x|
+  x.report { n.times { friendly_words.include?('mandarin') } }
+  x.report { n.times { friendly_string =~ /mandarin/ } }
+  x.report { n.times { friendly_string['mandarin'] } }
+  x.report { n.times { friendly_string.index('mandarin') } }
+end
+
+Matching against values as a string is ~7x faster
+
+    user     system      total        real
+5.630000   0.000000   5.630000 (  5.625129)
+0.790000   0.000000   0.790000 (  0.788589)
+1.190000   0.000000   1.190000 (  1.192151)
+1.190000   0.000000   1.190000 (  1.187852)
+
+---
+
+# 1 Total: 194.028314
+
+ %self      total      self      wait     child     calls  name
+ 37.23    164.362    72.237     0.000    92.125 10681477  *Hash#each
+ 11.02     21.382    21.380     0.000     0.001 10972331   <Module::Crosscounter::Compute>#regexify
+ 10.90     21.147    21.146     0.000     0.000 10972547   String#sub
+  7.86    177.838    15.241     0.000   162.596 10676448   Enumerable#all?
+  7.02     13.617    13.617     0.000     0.000 10974955   String#=~
+  6.78    190.996    13.158     0.000   177.838    13566   Array#count
+  4.73      9.179     9.179     0.000     0.000 10972581   Hash#fetch
+  4.66      9.047     9.047     0.000     0.000 11043313   Symbol#to_s
+  4.47      8.676     8.676     0.000     0.000 10972786   String#to_sym
+  3.02      5.866     5.866     0.000     0.000  9305498   String#to_s
+  0.81      1.577     1.577     0.000     0.000  1706407   Fixnum#to_s
+  0.06    188.146     0.118     0.000   188.028     8381  *Array#each
+  0.05    192.566     0.105     0.000   192.460     4174  *Array#map
+  0.04      0.079     0.079     0.000     0.000     8026   String#gsub
+
+# 2 Total: 112.476687 (1.73x Faster)
+
+ %self      total      self      wait     child     calls  name
+ 39.07     84.951    43.949     0.000    41.002 10681477  *Hash#each
+ 17.29     19.451    19.450     0.000     0.001 10972331   <Module::Crosscounter::Compute>#regexify
+ 12.52     97.285    14.085     0.000    83.200 10676448   Enumerable#all?
+ 11.02     12.400    12.400     0.000     0.000 10974955   String#=~
+ 10.87    109.508    12.224     0.000    97.285    13566   Array#count
+  4.78      5.379     5.379     0.000     0.000  9305498   String#to_s
+  1.33      1.494     1.494     0.000     0.000  1706407   Fixnum#to_s
+  0.53      0.596     0.596     0.000     0.000   305605   String#sub
+  0.09    110.965     0.104     0.000   110.860     4174  *Array#map
+  0.09    108.632     0.096     0.000   108.536     9168  *Array#each
+  0.08      0.139     0.089     0.000     0.050     8605   ActiveSupport::Callbacks::ClassMethods#__callback_runner_name
+  0.06      0.088     0.068     0.000     0.021     4722   <Class::ActiveSupport::TimeZone>#seconds_to_utc_offset
+  0.04      0.050     0.050     0.000     0.000    64463   Symbol#to_s
+  0.04      0.108     0.049     0.000     0.059     7875   ActiveRecord::AttributeMethods::Read::ClassMethods#type_cast_attribute
+  0.04      0.056     0.047     0.000     0.009     4210   <Class::Hash>#[]
+  0.04      0.326     0.046     0.000     0.281    11530   ActiveRecord::AttributeMethods#respond_to?
+  0.04      0.684     0.044     0.000     0.641     4191   ActiveRecord::Base#init_with
+  0.04      0.041     0.041     0.000     0.000     8026   String#gsub
+
+# Total: 92.512639 (1.21x Faster)
+
+ %self      total      self      wait     child     calls  name
+ 50.37     65.501    46.595     0.000    18.906 10681477  *Hash#each
+ 14.75     77.401    13.648     0.000    63.753 10676448   Enumerable#all?
+ 13.03     89.452    12.051     0.000    77.401    13566   Array#count
+  7.61      7.039     7.039     0.000     0.000 10894304   Kernel#kind_of?
+  2.15      3.004     1.986     0.000     1.018  1670405   String#==
+  2.12      1.959     1.958     0.000     0.000  1040575   Array#join
+  2.08      4.924     1.920     0.000     3.004  1670214   Fixnum#==
