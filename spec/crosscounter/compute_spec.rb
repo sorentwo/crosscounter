@@ -39,6 +39,18 @@ describe Crosscounter::Compute do
 
       computer.compute(enumerable, 'tags' => 'sad', '_tags' => 'happy').should == 1
     end
+
+    it 'normalizes value for consistent regular expression matching' do
+      enumerable = [
+        { 'tags' => ["A'strange! TAG"] },
+        { 'tags' => ["A strange!TAG"] },
+        { 'tags' => ["A strange!tag"] }
+      ]
+
+      computer.compute(enumerable, 'tags' => "A'strange! TAG").should == 3
+      computer.compute(enumerable, 'tags' => "astrangetag").should    == 3
+      computer.compute(enumerable, 'tags' => "A STRANGE TAG").should  == 3
+    end
   end
 
   describe '.compute_all' do

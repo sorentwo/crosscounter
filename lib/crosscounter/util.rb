@@ -15,8 +15,16 @@ module Crosscounter
       array.map { |object| Crosscounter::Util.stringify_keys(object) }
     end
 
+    def self.prepared(array)
+      array.map { |value| normalize(value) }.join("\t")
+    end
+
     def self.regexify(value)
-      @@regexes[value] ||= /(\A|\t)#{value}(\Z|\t)/
+      @@regexes[value] ||= /(\A|\t)#{normalize(value)}(\Z|\t)/
+    end
+
+    def self.normalize(value)
+      value.downcase.gsub(/[^a-z]/, '')
     end
 
     def self.tuplize(hash)
