@@ -8,7 +8,7 @@ module Crosscounter
           extracted = (object[key] || object[key.sub('_', '')])
 
           if extracted.kind_of?(Array)
-            Crosscounter::Util.prepared(extracted) =~ Crosscounter::Util.regexify(value)
+            extracted.include?(value)
           else
             extracted == value
           end
