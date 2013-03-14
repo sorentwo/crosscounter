@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/sorentwo/crosscounter.png)](https://codeclimate.com/github/sorentwo/crosscounter)
+[![Build Status](https://travis-ci.org/sorentwo/crosscounter.png?branch=master)](https://travis-ci.org/sorentwo/crosscounter)
 
 # Crosscounter
 
