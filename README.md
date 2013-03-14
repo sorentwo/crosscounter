@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/sorentwo/crosscounter.png)](https://codeclimate.com/github/sorentwo/crosscounter)
+
 # Crosscounter
 
 A set of functional tools for generating cross tabulations.
@@ -6,7 +8,7 @@ A set of functional tools for generating cross tabulations.
 
 Add this line to your application's Gemfile:
 
-    gem 'crosscounter', '~> 0.1.0.beta'
+    gem 'crosscounter', '~> 0.3.0'
 
 ## Usage
 
