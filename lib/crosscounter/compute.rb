@@ -2,7 +2,9 @@ require 'crosscounter/util'
 
 module Crosscounter
   module Compute
-    def self.compute(enumerable, properties)
+    extend self
+
+    def compute(enumerable, properties)
       enumerable.count do |object|
         properties.all? do |key, value|
           extracted = (object[key] || object[key.sub('_', '')])
@@ -16,7 +18,7 @@ module Crosscounter
       end
     end
 
-    def self.compute_all(enumerable, rows, columns)
+    def compute_all(enumerable, rows, columns)
       enumerable = Crosscounter::Util.stringify_all(enumerable)
 
       Crosscounter::Util.tuplize(rows).map do |tuple|

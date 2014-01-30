@@ -1,8 +1,10 @@
 module Crosscounter
   module Util
-    @@tuples  = {}
+    extend self
 
-    def self.stringify_keys(hash)
+    @@tuples = {}
+
+    def stringify_keys(hash)
       hash.keys.each do |key|
         hash[key.to_s] = hash.delete(key)
       end
@@ -10,11 +12,11 @@ module Crosscounter
       hash
     end
 
-    def self.stringify_all(array)
+    def stringify_all(array)
       array.map { |object| Crosscounter::Util.stringify_keys(object) }
     end
 
-    def self.tuplize(hash)
+    def tuplize(hash)
       @@tuples[hash] ||= hash.flat_map do |tuple|
         tuple.last.map { |value| [tuple.first.to_s, value] }
       end
