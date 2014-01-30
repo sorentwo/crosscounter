@@ -8,16 +8,17 @@ Gem::Specification.new do |gem|
   gem.version       = Crosscounter::VERSION
   gem.authors       = ['Parker Selbert']
   gem.email         = ['parker@sorentwo.com']
+  gem.homepage      = 'https://github.com/sorentwo/crosscounter'
   gem.description   = %(Functionally create cross tabulations)
   gem.summary       = %(
     Crosscounter allows you to create a simple pipeline for defining cross
     tabulated output)
-  gem.homepage      = 'https://github.com/sorentwo/crosscounter'
 
   gem.files         = `git ls-files`.split($/)
   gem.test_files    = gem.files.grep(%r{^(spec)/})
   gem.require_paths = ['lib']
 
-  gem.add_development_dependency 'rake',  '~> 10.1.1'
+  gem.add_development_dependency 'rake',  '~> 10.1'
   gem.add_development_dependency 'rspec', '~> 2.99.0.beta1'
+  gem.add_development_dependency 'benchmark-ips'
 end
