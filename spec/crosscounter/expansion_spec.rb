@@ -19,8 +19,8 @@ describe Crosscounter::Expansion do
 
   describe '.replace' do
     it 'replaces all objects with mapped values' do
-      male_object   = mock(gender: 'male')
-      female_object = mock(gender: 'female')
+      male_object   = double(gender: 'male')
+      female_object = double(gender: 'female')
 
       replaced = expansion.replace([male_object, female_object],
                                    gender: -> object { object.gender.downcase })

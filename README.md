@@ -10,7 +10,7 @@ A set of functional tools for generating cross tabulations.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'crosscounter', '~> 0.3.0'
+gem 'crosscounter'
 ```
 
 ## Usage
