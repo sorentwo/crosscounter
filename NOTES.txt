@@ -62,3 +62,53 @@ Sort by: self_time
   0.00      0.000     0.000     0.000     0.000      534   Kernel#class
   0.00     95.443     0.000     0.000    95.443        1   Global#[No method]
   0.00     95.443     0.000     0.000    95.443        1   Crosscounter::Compute#compute_all
+
+# Profile as of 746633d
+
+Total: 50.415018
+Sort by: self_time
+
+ %self      total      self      wait     child     calls  name
+ 47.33     33.178    23.862     0.000     9.317 15295038   Set#include?
+ 33.90     50.270    17.091     0.000    33.178    27482   Array#count
+ 18.48      9.317     9.317     0.000     0.000 15295038   Hash#include?
+  0.10     49.839     0.050     0.000    49.789      836   Array#each
+  0.09     50.315     0.045     0.000    50.270    27482   Crosscounter::Compute#compute
+  0.03      0.013     0.013     0.000     0.000     6884   Set#add
+  0.03      0.022     0.013     0.000     0.009      536   Hash#each
+  0.01      0.003     0.003     0.000     0.000     4817   Kernel#kind_of?
+  0.00      0.031     0.002     0.000     0.029      534   Set#initialize
+  0.00      0.027     0.002     0.000     0.025      534   Set#merge
+  0.00     50.415     0.002     0.000    50.413     2149  *Array#map
+  0.00      0.024     0.001     0.000     0.023      534   Set#do_with_enum
+  0.00      0.056     0.001     0.000     0.055      534   Crosscounter::Util#setify
+  0.00      0.024     0.001     0.000     0.023      536   Crosscounter::Util#stringify
+  0.00      0.032     0.001     0.000     0.031     1068  *Class#new
+  0.00      0.023     0.001     0.000     0.022      536   Enumerable#flat_map
+  0.00     49.818     0.001     0.000    49.817      302   Enumerable#inject
+  0.00      0.022     0.001     0.000     0.022      534   Enumerable#each_entry
+  0.00      0.001     0.001     0.000     0.000      534   Hash#initialize
+  0.00      0.000     0.000     0.000     0.000      534   Kernel#respond_to?
+  0.00      0.000     0.000     0.000     0.000      534   Kernel#instance_of?
+  0.00      0.000     0.000     0.000     0.000      534   Kernel#class
+  0.00      0.000     0.000     0.000     0.000      534   Kernel#nil?
+  0.00     50.415     0.000     0.000    50.415        1   Global#[No method]
+  0.00     50.415     0.000     0.000    50.415        1   Crosscounter::Compute#compute_all
+
+Total: 26.442810
+Sort by: self_time
+
+ %self      total      self      wait     child     calls  name
+ 64.06     26.310    16.939     0.000     9.371    27482   Array#count
+ 35.44      9.371     9.371     0.000     0.000 15295038   Hash#member?
+  0.22     26.123     0.058     0.000    26.064      836   Array#each
+  0.17     26.356     0.046     0.000    26.310    27482   Crosscounter::Compute#compute
+  0.05      0.022     0.013     0.000     0.009      536   Hash#each
+  0.01      0.003     0.003     0.000     0.000     4817   Kernel#kind_of?
+  0.01     26.443     0.002     0.000    26.441     2149  *Array#map
+  0.01     26.124     0.002     0.000    26.123      836   Enumerable#inject
+  0.00      0.037     0.001     0.000     0.036      534   Crosscounter::Util#hashify
+  0.00      0.024     0.001     0.000     0.023      536   Crosscounter::Util#stringify
+  0.00      0.023     0.001     0.000     0.022      536   Enumerable#flat_map
+  0.00     26.443     0.000     0.000    26.443        1   Global#[No method]
+  0.00     26.443     0.000     0.000    26.443        1   Crosscounter::Compute#compute_all

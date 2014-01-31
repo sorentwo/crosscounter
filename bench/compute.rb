@@ -2,7 +2,7 @@ require 'bundler'
 
 Bundler.setup
 
-require 'benchmark/ips'
+require 'benchmark'
 require 'crosscounter'
 require 'json'
 
@@ -20,7 +20,7 @@ if ENV['PROFILE']
   printer = RubyProf::FlatPrinter.new(result)
   printer.print(STDOUT)
 else
-  Benchmark.ips do |x|
+  Benchmark.bmbm do |x|
     x.report('compute_all' ) do
       Crosscounter::Compute.compute_all(data, rows, cols)
     end
