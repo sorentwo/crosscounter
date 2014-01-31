@@ -11,21 +11,10 @@ describe Crosscounter::Compute do
         Set.new(['age-18', 'gender-male'])
       ]
 
-      computer.compute(enumerable, ['age-18']).should == 2
-      computer.compute(enumerable, ['age-18', 'gender-male']).should   == 2
-      computer.compute(enumerable, ['age-19', 'gender-male']).should   == 0
-      computer.compute(enumerable, ['age-19', 'gender-female']).should == 1
-    end
-
-    it 'compensates for duplicate keys' do
-      enumerable = [
-        Set.new(['age-18', 'tags-happy', 'tags-sad']),
-        Set.new(['age-19', 'tags-happy', 'tags-mad']),
-        Set.new(['age-18', 'tags-mad',   'tags-sad']),
-        Set.new(['age-18', 'tags-sad'])
-      ]
-
-      computer.compute(enumerable, ['tags-sad', 'tags-happy']).should == 1
+      computer.compute(enumerable, 'age-18').should == 2
+      computer.compute(enumerable, 'age-18', 'gender-male').should   == 2
+      computer.compute(enumerable, 'age-19', 'gender-male').should   == 0
+      computer.compute(enumerable, 'age-19', 'gender-female').should == 1
     end
   end
 

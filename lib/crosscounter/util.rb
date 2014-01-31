@@ -1,3 +1,5 @@
+require 'set'
+
 module Crosscounter
   module Util
     extend self
