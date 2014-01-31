@@ -1,33 +1,24 @@
 require 'crosscounter/util'
+require 'set'
 
 module Crosscounter
   module Compute
     extend self
 
     def compute(enumerable, properties)
-      enumerable.count do |object|
-        properties.all? do |key, value|
-          extracted = (object[key] || object[key.sub('_', '')])
-
-          if extracted.kind_of?(Array)
-            extracted.include?(value)
-          else
-            extracted == value
-          end
-        end
+      enumerable.count do |set|
+        properties.all? { |prop| set.member?(prop) }
       end
     end
 
     def compute_all(enumerable, rows, columns)
-      enumerable = Crosscounter::Util.stringify_all(enumerable)
+      setified = enumerable.map { |hash| Util.setify(hash) }
 
-      Crosscounter::Util.tuplize(rows).map do |tuple|
-        initial = [tuple.last, compute(enumerable, tuple.first => tuple.last)]
+      Util.stringify(rows).map do |row|
+        initial = [row, compute(setified, [row])]
 
-        Crosscounter::Util.tuplize(columns).inject(initial) do |rows, column|
-          rows << compute(enumerable,
-                          tuple.first => tuple.last,
-                          "_#{column.first}" => column.last)
+        Util.stringify(columns).inject(initial) do |rows, col|
+          rows << compute(setified, [row, col])
         end
       end
     end
