@@ -4,14 +4,14 @@ module Crosscounter
   module Compute
     extend self
 
-    def compute(sets, prop_a, prop_b = nil)
-      sets.count do |set|
-        set.member?(prop_a) && (!prop_b || set.member?(prop_b))
+    def compute(enumerable, prop_a, prop_b = nil)
+      enumerable.count do |hash|
+        hash.member?(prop_a) && (!prop_b || hash.member?(prop_b))
       end
     end
 
     def compute_all(enumerable, rows, columns)
-      setified = enumerable.map { |hash| Util.setify(hash) }
+      setified = enumerable.map { |hash| Util.hashify(hash) }
       scolumns = Util.stringify(columns)
 
       Util.stringify(rows).map do |row|

@@ -1,19 +1,6 @@
 require 'crosscounter/util'
 
 describe Crosscounter::Util do
-  describe '.setify' do
-    it 'unzips a hash into a set of key/value tuples' do
-      hash = { gender: 'male', tags: %w[a b c] }
-
-      expect(Crosscounter::Util.setify(hash)).to eq(Set.new([
-        'gender-male',
-        'tags-a',
-        'tags-b',
-        'tags-c'
-      ]))
-    end
-  end
-
   describe '.stringify' do
     it 'unzips a hash into key-value strings' do
       expect(Crosscounter::Util.stringify(age: [18, 19, 20])).to eq([

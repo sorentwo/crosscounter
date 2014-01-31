@@ -4,8 +4,11 @@ module Crosscounter
   module Util
     extend self
 
-    def setify(hash)
-      Set.new(stringify(hash))
+    def hashify(hash)
+      stringify(hash).inject({}) do |memo, key|
+        memo[key] = 0
+        memo
+      end
     end
 
     def stringify(hash)
