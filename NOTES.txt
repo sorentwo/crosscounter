@@ -68,3 +68,35 @@ Matching against values as a string is ~7x faster
   2.15      3.004     1.986     0.000     1.018  1670405   String#==
   2.12      1.959     1.958     0.000     0.000  1040575   Array#join
   2.08      4.924     1.920     0.000     3.004  1670214   Fixnum#==
+
+---
+
+Total: 145.487024
+Sort by: self_time
+
+ %self      total      self      wait     child     calls  name
+ 45.73    107.438    66.532     0.000    40.906 14675390   Hash#each
+ 14.30    128.248    20.812     0.000   107.437 14675388   Enumerable#all?
+ 12.15     30.163    17.675     0.000    12.488  8346096   Array#include?
+ 11.59    145.109    16.861     0.000   128.248    27482   Array#count
+  8.58     12.488    12.488     0.000     0.000 21735448   String#==
+  6.53      9.502     9.502     0.000     0.000 15295038   Kernel#kind_of?
+  0.85      1.241     1.241     0.000     0.000   619650   String#sub
+  0.14    143.935     0.202     0.000   143.733      836   Array#each
+  0.03    145.158     0.049     0.000   145.109    27482   Crosscounter::Compute#compute
+  0.03      0.036     0.036     0.000     0.000    54975   Array#last
+  0.02      0.036     0.036     0.000     0.000    55054   Array#first
+  0.01      0.037     0.020     0.000     0.017      615   Array#hash
+  0.01      0.017     0.017     0.000     0.000    28187   String#hash
+  0.00    145.487     0.004     0.000   145.483       13  *Array#map
+  0.00      0.003     0.003     0.000     0.000     4806   Hash#delete
+  0.00      0.003     0.003     0.000     0.000     5198   String#to_s
+  0.00      0.040     0.002     0.000     0.037      304   Hash#hash
+  0.00      0.043     0.002     0.000     0.041      303   Crosscounter::Util#tuplize
+  0.00      0.017     0.001     0.000     0.015      534   Crosscounter::Util#stringify_keys
+  0.00    143.921     0.001     0.000   143.920      302   Enumerable#inject
+  0.00      0.000     0.000     0.000     0.000      534   Hash#keys
+  0.00    145.487     0.000     0.000   145.487        1   Global#[No method]
+  0.00    145.487     0.000     0.000   145.487        1   Crosscounter::Compute#compute_all
+  0.00      0.001     0.000     0.000     0.001        2   Enumerable#flat_map
+  0.00      0.017     0.000     0.000     0.017        1   Crosscounter::Util#stringify_all
