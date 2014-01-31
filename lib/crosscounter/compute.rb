@@ -4,10 +4,20 @@ module Crosscounter
   module Compute
     extend self
 
-    def compute(enumerable, prop_a, prop_b = nil)
-      enumerable.count do |hash|
-        hash.member?(prop_a) && (!prop_b || hash.member?(prop_b))
+    def compute(hashes, prop_a, prop_b = nil)
+      count = 0
+      index = 0
+      length = hashes.length
+
+      while index < length
+        if hashes[index].member?(prop_a) && (!prop_b || hashes[index].member?(prop_b))
+          count += 1
+        end
+
+        index += 1
       end
+
+      count
     end
 
     def compute_all(enumerable, rows, columns)
@@ -17,9 +27,11 @@ module Crosscounter
       Util.stringify(rows).map do |row|
         initial = [row, compute(setified, row)]
 
-        scolumns.inject(initial) do |rows, col|
-          rows << compute(setified, row, col)
+        scolumns.each do |col|
+          initial << compute(setified, row, col)
         end
+
+        initial
       end
     end
   end

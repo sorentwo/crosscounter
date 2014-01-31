@@ -11,12 +11,12 @@ module Crosscounter
       end
     end
 
-    def stringify(hash)
+    def stringify(hash, sep = '|')
       hash.flat_map do |key, value|
         if value.kind_of?(Enumerable)
-          value.map { |elem| "#{key}-#{elem}" }
+          value.map { |elem| "#{key}#{sep}#{elem}" }
         else
-          ["#{key}-#{value}"]
+          ["#{key}#{sep}#{value}"]
         end
       end
     end

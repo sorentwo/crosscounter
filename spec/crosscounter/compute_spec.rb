@@ -33,13 +33,13 @@ describe Crosscounter::Compute do
       )
 
       computed.should == [
-        ['age-18',         2, 1, 2, 1],
-        ['age-19',         2, 1, 1, 1],
-        ['gender-male',    3, 1, 3, 1],
-        ['gender-female',  1, 1, 0, 1],
-        ['tags-happy',     2, 2, 1, 1],
-        ['tags-sad',       3, 1, 3, 1],
-        ['tags-mad',       2, 1, 1, 2]
+        ['age|18',         2, 1, 2, 1],
+        ['age|19',         2, 1, 1, 1],
+        ['gender|male',    3, 1, 3, 1],
+        ['gender|female',  1, 1, 0, 1],
+        ['tags|happy',     2, 2, 1, 1],
+        ['tags|sad',       3, 1, 3, 1],
+        ['tags|mad',       2, 1, 1, 2]
       ]
     end
   end
