@@ -16,7 +16,7 @@ module Crosscounter
 
     def hashify(hash)
       stringify(hash).inject({}) do |memo, key|
-        memo[key] = 0
+        memo[key] = true
         memo
       end
     end

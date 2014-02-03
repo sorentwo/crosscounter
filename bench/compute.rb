@@ -21,7 +21,7 @@ if ENV['PROFILE']
   printer.print(STDOUT)
 else
   Benchmark.bmbm do |x|
-    x.report('compute_all' ) do
+    x.report('compute_all') do
       Crosscounter::Compute.compute_all(data, rows, cols)
     end
   end
