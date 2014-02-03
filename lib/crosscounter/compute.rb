@@ -24,7 +24,7 @@ module Crosscounter
       setified = enumerable.map { |hash| Util.hashify(hash) }
       scolumns = Util.stringify(columns)
 
-      Util.stringify(rows).map do |row|
+      Util.stringify(rows).map! do |row|
         initial = [row, compute(setified, row)]
 
         scolumns.each do |col|
