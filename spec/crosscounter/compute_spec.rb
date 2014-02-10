@@ -11,10 +11,10 @@ describe Crosscounter::Compute do
         Set.new(['age-18', 'gender-male'])
       ]
 
-      computer.compute(enumerable, 'age-18').should == 2
-      computer.compute(enumerable, 'age-18', 'gender-male').should   == 2
-      computer.compute(enumerable, 'age-19', 'gender-male').should   == 0
-      computer.compute(enumerable, 'age-19', 'gender-female').should == 1
+      expect(computer.compute(enumerable, 'age-18')).to eq(2)
+      expect(computer.compute(enumerable, 'age-18', 'gender-male')).to eq(2)
+      expect(computer.compute(enumerable, 'age-19', 'gender-male')).to eq(0)
+      expect(computer.compute(enumerable, 'age-19', 'gender-female')).to eq(1)
     end
   end
 
@@ -32,7 +32,7 @@ describe Crosscounter::Compute do
         { tags: %w[happy sad mad] }
       )
 
-      computed.should == [
+      expect(computed).to eq([
         ['age|18',         2, 1, 2, 1],
         ['age|19',         2, 1, 1, 1],
         ['gender|male',    3, 1, 3, 1],
@@ -40,7 +40,33 @@ describe Crosscounter::Compute do
         ['tags|happy',     2, 2, 1, 1],
         ['tags|sad',       3, 1, 3, 1],
         ['tags|mad',       2, 1, 1, 2]
+      ])
+    end
+  end
+
+  describe '.compute_sum' do
+    it 'tabulates all rows against all columns combined' do
+      enumerable = [
+        { age: 18, gender: 'male',   tags: %w[happy sad] },
+        { age: 19, gender: 'female', tags: %w[happy mad] },
+        { age: 18, gender: 'male',   tags: %w[mad sad] },
+        { age: 19, gender: 'male',   tags: %w[happy sad] }
       ]
+
+      computed = computer.compute_sum(enumerable,
+        { age: [18, 19], gender: %w[male female], tags: %w[happy sad mad] },
+        { tags: %w[happy sad] }
+      )
+
+      expect(computed).to eq([
+        ['age|18',         2, 1],
+        ['age|19',         2, 1],
+        ['gender|male',    3, 2],
+        ['gender|female',  1, 0],
+        ['tags|happy',     3, 2],
+        ['tags|sad',       3, 2],
+        ['tags|mad',       2, 0]
+      ])
     end
   end
 end
