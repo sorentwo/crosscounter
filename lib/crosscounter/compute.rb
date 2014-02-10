@@ -55,7 +55,7 @@ module Crosscounter
       while index < length
         if hashes[index].member?(base_prop)
           count += 1
-          cross += 1 if other_props.all? { |prop| hashes[index].member?(prop) }
+          cross += 1 if other_props.any? && other_props.all? { |prop| hashes[index].member?(prop) }
         end
 
         index += 1
